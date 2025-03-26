@@ -100,10 +100,10 @@ EOF
 		rm -rf $buildpack_tmpdir $build_tmpdir $cache_tmpdir
 		error "Could not install dependencies"
 	fi
-	mv $build_tmpdir/.apt $BUILD_DIR
+	cp -r $build_tmpdir/.apt/. $BUILD_DIR/.apt/
 	# mv file in case user is using .profile.d
 	mkdir -p $BUILD_DIR/.profile.d/
-	mv $build_tmpdir/.profile.d/000_apt.sh $BUILD_DIR/.profile.d/
+	cp -r $build_tmpdir/.profile.d/. $BUILD_DIR/.profile.d/
 
 	rm -rf $buildpack_tmpdir $build_tmpdir $cache_tmpdir
 }
